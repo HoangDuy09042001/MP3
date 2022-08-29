@@ -53,13 +53,18 @@ header {
 }
 
 header h4 {
-    color: var(--primary-color);
+    color: white;
     font-size: 12px;
 }
 
 header h2 {
     color: var(--text-color);
-    font-size: 20px;
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 21px;
+    letter-spacing: 1.4px;
+    font-weight: bold;
 }
 
 /* CD */
@@ -87,7 +92,7 @@ header h2 {
 }
 
 .control .btn {
-    color: #666;
+    color: white;
     padding: 18px;
     font-size: 18px;
 }
@@ -109,14 +114,16 @@ header h2 {
 }
 
 .progress {
-    width: 100%;
     -webkit-appearance: none;
-    height: 6px;
-    background: #d3d3d3;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(-45deg, #ff855f, #ea4081, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 9s ease infinite;
     outline: none;
-    opacity: 0.7;
     -webkit-transition: 0.2s;
     transition: opacity 0.2s;
+    cursor: pointer;
 }
 
 .progress::-webkit-slider-thumb {
@@ -149,7 +156,7 @@ header h2 {
 }
 
 
-.song.active .option,
+
 .song.active .author,
 .song.active .title {
     color: #fff;
@@ -192,4 +199,8 @@ header h2 {
     padding: 16px 8px;
     color: #999;
     font-size: 18px;
+}
+
+.option__active {
+    color: red;
 }
