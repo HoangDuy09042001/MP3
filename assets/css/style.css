@@ -54,14 +54,33 @@ html {
     display: none;
 }
 
+.overlay {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .dashboard {
     padding: 16px 16px 14px;
-    background-color: pink;
+    /* background-color: pink; */
     position: fixed;
     top: 0;
     width: 100%;
     max-width: 480px;
     border-bottom: 1px solid #ebebeb;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    background-size: cover;
+}
+
+.overlay {
+    padding: 16px 16px 14px;
+    /* background-color: pink; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 480px;
+    border-bottom: 1px solid #ebebeb;
+    background: url(https://i.pinimg.com/originals/7b/45/ee/7b45eead1e60231a2dd975b9740a7da8.gif);
+    background-size: cover;
 }
 
 /* HEADER */
@@ -110,6 +129,10 @@ header h2 {
     align-items: center;
     justify-content: space-around;
     padding: 18px 0 8px 0;
+}
+
+.control.faded {
+    opacity: 0.5;
 }
 
 .control .btn {

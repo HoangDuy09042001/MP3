@@ -211,7 +211,27 @@ window.addEventListener('DOMContentLoaded', function () {
         randomColor: function random_bg_color() {
             let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'];
             let a;
+            let dashboardGifs = ['https://i.pinimg.com/originals/7b/45/ee/7b45eead1e60231a2dd975b9740a7da8.gif',
+                'https://c.tenor.com/aBDKTfhvGfQAAAAC/adele.gif',
+                'https://c.tenor.com/6QDe6RCa2pkAAAAC/taylor-swift-taylor.gif',
+                'https://media4.giphy.com/media/tgxx8jKWfHF1viRibk/200w.gif?cid=82a1493boa0bnclsmr7vt8jrjdc3ksanp2ozcyjh1lk3r68i&rid=200w.gif&ct=g',
+                'https://mediacms.thethaovanhoa.vn/Upload/YSu1TgnVnIyxx9zisEumA/files/2020/09/0909/5.gif',
+                'https://cdn.tgdd.vn/Files/2020/07/06/1268110/st_640x360-600x400.gif',
+                'https://static.yeah1music.net/uploads/editors/38/2019/06/24/SxHfKDl3C47w5D41DrYbq7rh0n4R41nkdkaFIEfC.gif',
+                'https://j.gifs.com/0gBLK3.gif',
+                'https://thumbs.gfycat.com/UnequaledShadowyHare-size_restricted.gif',
+                'https://c.tenor.com/jgt9iCDmW7AAAAAd/ariana-grande-ari.gif',
+                'https://kenh14cdn.com/zoom/640_360/203336854389633024/2022/4/29/photo1651244108089-1651244111413524948417.gif',
+                'https://c.tenor.com/DIZe27LrJaQAAAAd/nhi%E1%BB%87t-ba-peace.gif',
+                'https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/1/2/2f92b1d46af37ba5890ad15f5e2aa7b4-1641105175053113035585.gif',
+                'https://cdn.24h.com.vn/upload/4-2020/images/2020-12-20/dich-Le-Nhiet-Ba-ggg-1608467285-250-width650height650.gif',
+                'https://afamilycdn.com/150157425591193600/2020/9/4/ezgifcom-video-to-gif-1-15992129560431731217225.gif',
+                'https://photo-cms-tpo.zadn.vn/Uploaded/2022/zaugtn/2020_05_19/tien_phong_ngoctrinh3_zrdv.gif',
+                'https://afamilycdn.com/2018/6/5/ezgifcom-crop-2-1528187818026138977953-15282147026251036857737.gif',
+                'https://i.pinimg.com/originals/0b/f8/ec/0bf8eccb617365d82b62935526576924.gif',
 
+            ]
+            const index = Math.floor(Math.random() * dashboardGifs.length);
             function populate(a) {
                 for (let i = 0; i < 6; i++) {
                     let x = Math.round(Math.random() * 14);
@@ -225,7 +245,9 @@ window.addEventListener('DOMContentLoaded', function () {
             let angle = 'to right';
 
             let gradient = 'linear-gradient(' + angle + ',' + Color1 + ', ' + Color2 + ")";
-            dashboard.style.background = gradient;
+            // $('.overlay').style.background = "url('https://c.tenor.com/aBDKTfhvGfQAAAAC/adele.gif')"
+            $('.overlay').style.background = `url('${dashboardGifs[index]}')`
+            $('.overlay').style.backgroundSize = "cover";
             playlist.style.background = gradient;
         }
         ,
@@ -259,6 +281,7 @@ window.addEventListener('DOMContentLoaded', function () {
         handleEvents: function () {
             const _this = this;
             const cdWidth = cd.offsetWidth
+            $('.overlay').style.height = dashboard.offsetHeight + 'px';
 
             // Xu ly CD quay / dung 
             const cdThumbAnimate = cdThumb.animate([
@@ -271,9 +294,22 @@ window.addEventListener('DOMContentLoaded', function () {
             // Xử lý phóng to thu nhỏ CD 
             document.onscroll = function () {
                 const scrollTop = window.scrollY || document.documentElement.scrollTop
-                const newCdWidth = cdWidth - scrollTop
-                cd.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0
-                cd.style.opacity = newCdWidth / cdWidth
+                const newCdWidth = cdWidth - scrollTop > 70 ? (cdWidth - scrollTop) : 70;
+                cd.style.width = newCdWidth ? newCdWidth + 'px' : 0
+                cd.style.opacity = newCdWidth > 70 ? newCdWidth / cdWidth : 0
+                $('.control').style.opacity = newCdWidth > 70 ? newCdWidth / cdWidth : 0.5;
+                $('.overlay').style.height = dashboard.offsetHeight + 'px';
+                if (newCdWidth <= 70) {
+                    $('.control .btn-toggle-play').style.backgroundColor = "transparent";
+                    $('header h2').style.opacity = "0.5";
+                    $('header h2').style.fontSize = "15px";
+                } else {
+                    $('.control .btn-toggle-play').style.backgroundColor = "#33ec1f";
+                    $('header h2').style.opacity = "1";
+                    $('header h2').style.fontSize = "21px";
+
+                }
+
             }
 
             //  Xử lý khi click play 
