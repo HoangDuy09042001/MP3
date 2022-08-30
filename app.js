@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', function () {
     const repeatBtn = $('.btn-repeat');
     const playlist = $('.playlist');
     const dashboard = $('.dashboard');
-    let likeLists = new Set([]);
     const app = {
         currentIndex: 0,
         isPlaying: false,
@@ -387,6 +386,8 @@ window.addEventListener('DOMContentLoaded', function () {
                                 block: 'center'
                             })
                         }, 250)
+
+                        playBtn.click();
                     }
 
                     // Thả tim cho từng bài hát
