@@ -203,11 +203,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 if (_this.isRandom) {
                     _this.playRandomSong();
                 } else {
-                    _this.nextSong()
-
+                    _this.nextSong();
                 }
+                playBtn.click();
                 audio.play()
-                // _this.render();
                 _this.scrollToActiveSong();
             }
 
@@ -219,8 +218,8 @@ window.addEventListener('DOMContentLoaded', function () {
                     _this.prevSong()
 
                 }
+                playBtn.click();
                 audio.play()
-                //_this.render();
                 _this.scrollToActiveSong();
             }
             // Xu ly bat / tat random song 
