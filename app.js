@@ -232,12 +232,6 @@ window.addEventListener('DOMContentLoaded', function () {
         ,
         render: function () {
             const htmls = this.songs.map((song, index) => {
-                let isHeart = false;
-                likeLists.forEach(likeList => {
-                    if (index == likeList) {
-                        isHeart = true;
-                    }
-                })
                 return `
                         <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
                             <div class="thumb"
@@ -248,7 +242,7 @@ window.addEventListener('DOMContentLoaded', function () {
                                <p class="author">${song.singer}</p>
                             </div>
                             <div class="option">
-                                <i class="option__icon ${isHeart ? 'option__active' : ''} fas fa-heart"></i>
+                                <i class="option__icon fas fa-heart"></i>
                             </div>
                         </div>
                     `
@@ -313,7 +307,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
 
             // Xu ly tua song 
-            progress.onchange = function (e) {
+            progress.oninput = function (e) {
                 const seekTime = e.target.value / 100 * audio.duration;
                 audio.currentTime = seekTime;
             }
@@ -369,36 +363,38 @@ window.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Lang nghe hanh vi click vao playlist 
-            playlist.onclick = function (e) {
-                const songNode = e.target.closest('.song:not(.active)')
-                const option = e.target.closest('.option')
-                const option__icon = e.target.closest('.option__icon')
-                // option.addEventListener('click', e => e.stopPropagation());
-                if (songNode || e.target.closest('.option')) {
-                    //Xu ly khi click vao song
-                    if (songNode && !option) {
-                        songNode.addEventListener('click', console.log(e.target))
-                        _this.currentIndex = Number(songNode.dataset.index)
-                        _this.loadCurrentSong()
-                        _this.render()
-                        audio.play()
+            //Lắng nghe hành vi click vào playlist
 
+            playlist.onclick = function (event) {
+                const songNode = event.target.closest(".song:not(.active)");
+                const likeHeart = event.target.closest('.option__icon');
+                const prevSongNodeActive = document.querySelector('.song.active');
+
+                if (songNode || likeHeart) {
+                    // Xử lý khi click vào song
+                    // Handle when clicking on the song
+                    if (songNode && !likeHeart) {
+                        _this.currentIndex = parseInt(songNode.dataset.index);
+                        _this.loadCurrentSong();
+                        audio.play();
+                        console.log(_this.currentIndex)
+                        prevSongNodeActive.classList.remove('active');
+                        songNode.classList.add('active');
+
+                        setTimeout(function () {
+                            songNode.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            })
+                        }, 250)
                     }
 
-                    //Xu ly khi click vao song option
-                    if (option) {
-                        const optionParent = option.closest('.song')
-                        _this.isOption = !_this.isOption
-                        if (_this.isOption) {
-                            likeLists.add(optionParent.dataset.index)
-                        } else {
-                            likeLists.delete(optionParent.dataset.index)
-                        }
-                        option__icon.classList.toggle('option__active', _this.isOption)
+                    // Thả tim cho từng bài hát
+                    if (likeHeart) {
+                        likeHeart.classList.toggle('option__active')
                     }
                 }
-            }
+            };
 
 
         },
