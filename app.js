@@ -83,6 +83,126 @@ window.addEventListener('DOMContentLoaded', function () {
                 singer: 'Phạm Thoại',
                 path: './assets/music/thuoc-hoi-trinh-remix-pham-thoai.mp3',
                 image: './assets/img/song10.png'
+            },
+            {
+                name: 'Chandelier',
+                singer: 'Sia',
+                path: './assets/music/Chandelier - Sia.mp3',
+                image: './assets/img/song11.jpg'
+            },
+            {
+                name: 'Easy on me',
+                singer: 'Adele',
+                path: './assets/music/EasyOnMe-Adele-7107614.mp3',
+                image: './assets/img/song12.png'
+            },
+            {
+                name: 'Em Da Xa Anh',
+                singer: 'Bibo',
+                path: './assets/music/Em Da Xa Anh Bibo Remix_ - Nhu Viet_ ACV.mp3',
+                image: './assets/img/song13.png'
+            },
+            {
+                name: 'Ha Con Vuong Nang Remix',
+                singer: 'DatKaa',
+                path: './assets/music/Ha Con Vuong Nang Remix_ - DatKaa_ Kido.mp3',
+                image: './assets/img/song14.png'
+            },
+            {
+                name: 'Happier',
+                singer: 'Marshello',
+                path: './assets/music/Happier - Marshmello_ Bastille.mp3',
+                image: './assets/img/song15.png'
+            },
+            {
+                name: 'Havana',
+                singer: 'Camila Cabello',
+                path: './assets/music/Havana-CamilaCabelloYoungThug-5817730.mp3',
+                image: './assets/img/song16.png'
+            },
+            {
+                name: 'Hero',
+                singer: 'Christina',
+                path: './assets/music/HeroFeatChristinaPerri-CashCash-6430079.mp3',
+                image: './assets/img/song17.png'
+            },
+            {
+                name: 'Industry Baby',
+                singer: 'Lil Nas X',
+                path: './assets/music/Industry Baby - Lil Nas X_ Jack Harlow.mp3',
+                image: './assets/img/song18.png'
+            },
+            {
+                name: 'Lovely',
+                singer: 'Billie Eilish',
+                path: './assets/music/Lovely - Billie Eilish_ Khalid.mp3',
+                image: './assets/img/song19.png'
+            },
+            {
+                name: 'MoveYourBodyAlanWalkerRemix',
+                singer: 'Sia feats Alan Walker',
+                path: './assets/music/MoveYourBodyAlanWalkerRemix-Sia-4633854.mp3',
+                image: './assets/img/song20.png'
+            },
+            {
+                name: 'Ngày Đầu Tiên',
+                singer: 'Đức Phúc',
+                path: './assets/music/NgayDauTien-DucPhuc-7129810.mp3',
+                image: './assets/img/song21.png'
+            },
+            {
+                name: 'NgayThoPhongMaxRemix',
+                singer: 'Tăng Duy Tân',
+                path: './assets/music/NgayThoPhongMaxRemix-TangDuyTan-6689614.mp3',
+                image: './assets/img/song22.png'
+            },
+            {
+                name: 'On The Ground',
+                singer: 'Rose',
+                path: './assets/music/On The Ground - Rose.mp3',
+                image: './assets/img/song23.png'
+            },
+            {
+                name: 'Play Date',
+                singer: 'Melanie Martinez',
+                path: './assets/music/Play Date - Melanie Martinez.mp3',
+                image: './assets/img/song24.png'
+            },
+            {
+                name: 'Positions',
+                singer: 'Ariana Grande',
+                path: './assets/music/Positions - Ariana Grande.mp3',
+                image: './assets/img/song25.png'
+            },
+            {
+                name: 'Rather Be',
+                singer: 'Jess Glynne',
+                path: './assets/music/Rather Be - Clean Bandit_ Jess Glynne.mp3',
+                image: './assets/img/song26.png'
+            },
+            {
+                name: 'Set Fire To The Rain',
+                singer: 'Adele',
+                path: './assets/music/Set Fire To The Rain - Adele.mp3',
+                image: './assets/img/song27.png'
+            },
+            {
+                name: 'That\'s What I Want',
+                singer: 'Lil Nas X',
+                path: './assets/music/That_s What I Want - Lil Nas X.mp3',
+                image: './assets/img/song28.png'
+            },
+            {
+                name: 'Stay',
+                singer: 'Justin Bieber',
+                path: './assets/music/Stay - The Kid LAROI_ Justin Bieber.mp3',
+                image: './assets/img/song29.jpg'
+            },
+            {
+                name: 'Huynh De Oi',
+                singer: 'Htrol',
+                path: './assets/music/Huynh De Oi Toi Nho Anh Htrol Remix - Ca.mp3',
+                image: './assets/img/song30.jpg'
             }
         ],
         setConfig: function (key, value) {
@@ -276,8 +396,6 @@ window.addEventListener('DOMContentLoaded', function () {
                             likeLists.delete(optionParent.dataset.index)
                         }
                         option__icon.classList.toggle('option__active', _this.isOption)
-                        likeLists.forEach(item => console.log(item * 100));
-                        console.log(likeLists)
                     }
                 }
             }
