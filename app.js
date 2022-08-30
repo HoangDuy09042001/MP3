@@ -206,6 +206,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     _this.nextSong();
                 }
                 playBtn.click();
+                _this.render();
                 audio.play()
                 _this.scrollToActiveSong();
             }
@@ -219,6 +220,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
                 }
                 playBtn.click();
+                _this.render();
                 audio.play()
                 _this.scrollToActiveSong();
             }
