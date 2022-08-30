@@ -379,15 +379,16 @@ window.addEventListener('DOMContentLoaded', function () {
                         console.log(_this.currentIndex)
                         prevSongNodeActive.classList.remove('active');
                         songNode.classList.add('active');
-
+                        _this.isPlaying = true;
+                        player.classList.add("playing");
                         setTimeout(function () {
                             songNode.scrollIntoView({
                                 behavior: 'smooth',
                                 block: 'center'
-                            })
+                            }
+                            )
+                            // playBtn.click();
                         }, 250)
-
-                        playBtn.click();
                     }
 
                     // Thả tim cho từng bài hát
