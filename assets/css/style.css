@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #ec1f55;
+    --primary-color: #33ec1f;
     --text-color: #333;
 }
 
@@ -223,5 +223,5 @@ header h2 {
 
 .option__icon.option__active {
     animation: effect-heart 0.4s linear;
-    color: rgb(183, 255, 0);
+    color: rgb(255, 0, 0);
 }
