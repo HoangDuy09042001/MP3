@@ -9,6 +9,24 @@
     box-sizing: inherit;
 }
 
+@keyframes effect-heart {
+    0% {
+        transform: rotate(60deg) scale(1.7);
+    }
+
+    40% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    41% {
+        transform: rotate(360deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
 body {
     background-color: #f5f5f5;
 }
@@ -201,6 +219,7 @@ header h2 {
     font-size: 18px;
 }
 
-.option__active {
+.option__icon.option__active {
+    animation: effect-heart 0.4s linear;
     color: rgb(183, 255, 0);
 }
