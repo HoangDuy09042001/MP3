@@ -241,7 +241,7 @@ window.addEventListener('DOMContentLoaded', function () {
                                <p class="author">${song.singer}</p>
                             </div>
                             <div class="option">
-                                <i class="option__icon fas fa-heart"></i>
+                                <i class="option__icon far fa-heart"></i>
                             </div>
                         </div>
                     `
@@ -393,6 +393,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
                     // Thả tim cho từng bài hát
                     if (likeHeart) {
+                        if (likeHeart.classList.contains("far")) {
+                            likeHeart.classList.remove("far")
+                            likeHeart.classList.add("fas")
+                        } else {
+                            likeHeart.classList.remove("fas")
+                            likeHeart.classList.add("far")
+                        }
                         likeHeart.classList.toggle('option__active')
                     }
                 }
