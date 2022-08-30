@@ -139,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 image: './assets/img/song19.png'
             },
             {
-                name: 'MoveYourBodyAlanWalkerRemix',
+                name: 'MoveYourBody',
                 singer: 'Sia feats Alan Walker',
                 path: './assets/music/MoveYourBodyAlanWalkerRemix-Sia-4633854.mp3',
                 image: './assets/img/song20.png'
@@ -151,7 +151,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 image: './assets/img/song21.png'
             },
             {
-                name: 'NgayThoPhongMaxRemix',
+                name: 'NgayThoPhong',
                 singer: 'Tăng Duy Tân',
                 path: './assets/music/NgayThoPhongMaxRemix-TangDuyTan-6689614.mp3',
                 image: './assets/img/song22.png'
