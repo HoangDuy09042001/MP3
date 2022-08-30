@@ -99,6 +99,9 @@ header h2 {
     background-color: #333;
     background-size: cover;
     margin: auto;
+    border: 2px solid #fff;
+    box-shadow: 0px 6px 5px #ccc;
+
 }
 
 /* CONTROL */

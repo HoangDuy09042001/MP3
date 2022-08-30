@@ -376,6 +376,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         _this.currentIndex = parseInt(songNode.dataset.index);
                         _this.loadCurrentSong();
                         audio.play();
+                        cdThumbAnimate.play();
                         console.log(_this.currentIndex)
                         prevSongNodeActive.classList.remove('active');
                         songNode.classList.add('active');
