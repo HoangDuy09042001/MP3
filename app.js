@@ -252,7 +252,7 @@ window.addEventListener('DOMContentLoaded', function () {
             playlist.style.background = gradient;
         }
         ,
-        render: function () {
+        render: async function () {
             // const htmls = this.songs.map((song, index) => {
             //     return `
             //             <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
@@ -309,7 +309,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 let url = 'http://localhost:3000/songs';
                 try {
                     let res = await fetch(url);
-                    return await res.json();
+                    return res.json();
                 } catch (error) {
                     console.log(error);
                 }
@@ -341,14 +341,16 @@ window.addEventListener('DOMContentLoaded', function () {
                 return users;
             }
 
-            console.log(renderUsers());
+            let resultRenderArray = await renderUsers()
+            console.log(resultRenderArray);
+            return resultRenderArray;
 
         },
         defineProperties: function () {
             Object.defineProperty(this, 'currentSong', {
                 get: function () {
-                    //  console.log(await app.render());
                     return this.songs[this.currentIndex]
+
                 }
             })
         },
@@ -519,7 +521,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
         },
-        loadCurrentSong: function () {
+        loadCurrentSong: async function () {
             heading.textContent = this.currentSong.name
             cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
             audio.src = this.currentSong.path
