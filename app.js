@@ -204,6 +204,15 @@ window.addEventListener('DOMContentLoaded', function () {
                 image: './assets/img/song30.jpg'
             }
         ],
+        defineProperties: function () {
+            Object.defineProperty(this, 'currentSong', {
+                get: function () {
+
+                    return this.songs[this.currentIndex]
+
+                }
+            })
+        },
 
         setConfig: function (key, value) {
             this.config[key] = value;
@@ -253,24 +262,24 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         ,
         render: async function () {
-            // const htmls = this.songs.map((song, index) => {
-            //     return `
-            //             <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
-            //                 <div class="thumb"
-            //                 style="background-image: url('${song.image}')">
-            //                 </div>
-            //                 <div class="body">
-            //                    <h3 class="title">${song.name}</h3>
-            //                    <p class="author">${song.singer}</p>
-            //                 </div>
-            //                 <div class="option">
-            //                     <i class="option__icon far fa-heart"></i>
-            //                 </div>
-            //             </div>
-            //         `
+            const htmls = this.songs.map((song, index) => {
+                return `
+                        <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
+                            <div class="thumb"
+                            style="background-image: url('${song.image}')">
+                            </div>
+                            <div class="body">
+                               <h3 class="title">${song.name}</h3>
+                               <p class="author">${song.singer}</p>
+                            </div>
+                            <div class="option">
+                                <i class="option__icon far fa-heart"></i>
+                            </div>
+                        </div>
+                    `
 
-            // })
-            // playlist.innerHTML = htmls.join('')
+            })
+            playlist.innerHTML = htmls.join('')
 
 
 
@@ -305,54 +314,46 @@ window.addEventListener('DOMContentLoaded', function () {
             //     })
 
 
-            async function getUsers() {
-                let url = 'http://localhost:3000/songs';
-                try {
-                    let res = await fetch(url);
-                    return res.json();
-                } catch (error) {
-                    console.log(error);
-                }
-            }
+            // async function getUsers() {
+            //     let url = 'http://localhost:3000/songs';
+            //     try {
+            //         let res = await fetch(url);
+            //         return res.json();
+            //     } catch (error) {
+            //         console.log(error);
+            //     }
+            // }
 
-            async function renderUsers() {
-                let users = await getUsers();
-                let html = '';
-                users.forEach((song, index) => {
-                    let htmlSegment = `
-                                                <div class="song ${index === app.currentIndex ? 'active' : ''}" data-index="${index}">
-                                                    <div class="thumb"
-                                                    style="background-image: url('${song.image}')">
-                                                    </div>
-                                                    <div class="body">
-                                                       <h3 class="title">${song.name}</h3>
-                                                       <p class="author">${song.singer}</p>
-                                                    </div>
-                                                    <div class="option">
-                                                        <i class="option__icon far fa-heart"></i>
-                                                    </div>
-                                                </div>
-                                            `;
+            // async function renderUsers() {
+            //     let users = await getUsers();
+            //     let html = '';
+            //     users.forEach((song, index) => {
+            //         let htmlSegment = `
+            //                                     <div class="song ${index === app.currentIndex ? 'active' : ''}" data-index="${index}">
+            //                                         <div class="thumb"
+            //                                         style="background-image: url('${song.image}')">
+            //                                         </div>
+            //                                         <div class="body">
+            //                                            <h3 class="title">${song.name}</h3>
+            //                                            <p class="author">${song.singer}</p>
+            //                                         </div>
+            //                                         <div class="option">
+            //                                             <i class="option__icon far fa-heart"></i>
+            //                                         </div>
+            //                                     </div>
+            //                                 `;
 
-                    html += htmlSegment;
-                });
+            //         html += htmlSegment;
+            //     });
 
-                playlist.innerHTML = html;
-                return users;
-            }
+            //     playlist.innerHTML = html;
+            //     return users;
+            // }
 
-            let resultRenderArray = await renderUsers()
-            console.log(resultRenderArray);
-            return resultRenderArray;
+            // let resultRenderArray = await renderUsers()
+            // console.log(resultRenderArray);
+            // return resultRenderArray;
 
-        },
-        defineProperties: function () {
-            Object.defineProperty(this, 'currentSong', {
-                get: function () {
-                    return this.songs[this.currentIndex]
-
-                }
-            })
         },
         handleEvents: function () {
             const _this = this;
