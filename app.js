@@ -204,6 +204,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 image: './assets/img/song30.jpg'
             }
         ],
+
         setConfig: function (key, value) {
             this.config[key] = value;
             localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
@@ -252,28 +253,101 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         ,
         render: function () {
-            const htmls = this.songs.map((song, index) => {
-                return `
-                        <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
-                            <div class="thumb"
-                            style="background-image: url('${song.image}')">
-                            </div>
-                            <div class="body">
-                               <h3 class="title">${song.name}</h3>
-                               <p class="author">${song.singer}</p>
-                            </div>
-                            <div class="option">
-                                <i class="option__icon far fa-heart"></i>
-                            </div>
-                        </div>
-                    `
+            // const htmls = this.songs.map((song, index) => {
+            //     return `
+            //             <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
+            //                 <div class="thumb"
+            //                 style="background-image: url('${song.image}')">
+            //                 </div>
+            //                 <div class="body">
+            //                    <h3 class="title">${song.name}</h3>
+            //                    <p class="author">${song.singer}</p>
+            //                 </div>
+            //                 <div class="option">
+            //                     <i class="option__icon far fa-heart"></i>
+            //                 </div>
+            //             </div>
+            //         `
 
-            })
-            playlist.innerHTML = htmls.join('')
+            // })
+            // playlist.innerHTML = htmls.join('')
+
+
+
+            // let posstApi = 'http://localhost:3000/songs'
+            // const Sings = fetch(posstApi)
+            //     .then(function (response) {
+            //         return response.json();
+            //     })
+            //     .then(function (posts) {
+            //         const htmls = posts.map((song, index) => {
+            //             return `
+            //                         <div class="song ${index === app.currentIndex ? 'active' : ''}" data-index="${index}">
+            //                             <div class="thumb"
+            //                             style="background-image: url('${song.image}')">
+            //                             </div>
+            //                             <div class="body">
+            //                                <h3 class="title">${song.name}</h3>
+            //                                <p class="author">${song.singer}</p>
+            //                             </div>
+            //                             <div class="option">
+            //                                 <i class="option__icon far fa-heart"></i>
+            //                             </div>
+            //                         </div>
+            //                     `
+
+            //         })
+            //         playlist.innerHTML = htmls.join('')
+            //         return posts
+            //     })
+            //     .catch(function (error) {
+            //         console.log("Loi roi")
+            //     })
+
+
+            async function getUsers() {
+                let url = 'http://localhost:3000/songs';
+                try {
+                    let res = await fetch(url);
+                    return await res.json();
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            async function renderUsers() {
+                let users = await getUsers();
+                let html = '';
+                users.forEach((song, index) => {
+                    let htmlSegment = `
+                                                <div class="song ${index === app.currentIndex ? 'active' : ''}" data-index="${index}">
+                                                    <div class="thumb"
+                                                    style="background-image: url('${song.image}')">
+                                                    </div>
+                                                    <div class="body">
+                                                       <h3 class="title">${song.name}</h3>
+                                                       <p class="author">${song.singer}</p>
+                                                    </div>
+                                                    <div class="option">
+                                                        <i class="option__icon far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            `;
+
+                    html += htmlSegment;
+                });
+
+                playlist.innerHTML = html;
+                return users;
+            }
+
+            console.log(renderUsers());
+
         },
         defineProperties: function () {
             Object.defineProperty(this, 'currentSong', {
                 get: function () {
+                    //  console.log(await app.render());
                     return this.songs[this.currentIndex]
                 }
             })
@@ -358,6 +432,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 _this.render();
                 audio.play()
                 _this.scrollToActiveSong();
+
             }
 
             // Khi prev song 
@@ -454,7 +529,7 @@ window.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 $('.song.active').scrollIntoView({
                     behavior: 'smooth',
-                    block: 'nearest',
+                    block: 'end',
                 })
             }, 300)
         },
